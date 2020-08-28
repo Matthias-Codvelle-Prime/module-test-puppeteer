@@ -67,5 +67,8 @@ describe("About tests", () => {
 });
 
 
-//si besoin de vérifier je peux prendre un screen avec 
-//await page.screenshot({path: './tests/img/about-test.png'});
+// si besoin de vérifier je peux prendre un screen avec 
+// await page.screenshot({path: './tests/img/about-test.png'});
+// être plus précis entre le cahier des tests et les tests en eux mêmes
+// exemple pour le test display_about on fait expect(html).toContain("powered by Polr 2");
+// alors que dans le cahier des charges on demande si on affiche bien l'about du site.
