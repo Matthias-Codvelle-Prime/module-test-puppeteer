@@ -4,7 +4,8 @@ describe("About tests", () => {
     let page;
 
     // parcours client avec about
-    test('home and about', async () => {
+
+    test('display about', async () => {
         await page.waitForSelector('#navbar li a');
         // click sur le lien "About" de la navigation
         await page.evaluate( () => {
@@ -18,7 +19,21 @@ describe("About tests", () => {
         const html = await page.$eval('.about-contents', e => e.innerHTML);
         // on vérifie qu'il contient la bonne chaîne de caractères
         expect(html).toContain("powered by Polr 2");
-        await page.screenshot({path: './tests/img/about-result.png'});
+        // screenshot for result
+        await page.screenshot({path: './tests/img/about-display_about.png'});
+    }, timeout);
+
+    test('display more information', async () => {
+        // click on MORE INFORMATION
+        await page.click('.btn-success');
+        
+        // on récupère les more informations
+        const more_informations = await page.$eval('#gpl-license', e => e.innerHTML);
+        // on vérifie qu'il contient une chaîne de caractères présente dans le more informations
+        expect(more_informations).toContain("Copyright (C) 2013-2017 Chaoyi Zha");
+
+        // screenshot for result
+        await page.screenshot({path: './tests/img/about-display_more_information.png'});
     }, timeout);
 
 
